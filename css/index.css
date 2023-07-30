@@ -67,7 +67,7 @@ article > div > img {
 
 
 .article-box1 {
-    background-image: url(../../img/main.jpg);
+    background-image: url(../img/main.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

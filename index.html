@@ -4,11 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="">
-    <meta property="og:site_name" content="" />
-    <meta property="og:url" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
     <title>fullpage test</title>
     <!--style-->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -169,16 +164,6 @@
                 let posTop = (page - 1) * $(window).height();
                 wrap.animate({ scrollTop: posTop },"slow");
             })
-
-
-            // 모바일 스크롤 
-            $(window).on("scroll" , function(e){
-
-                let test= $(this).scrollTop();
-                console.log(test);
-            })
-
-        
 
 
 
