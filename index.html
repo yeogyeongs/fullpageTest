@@ -148,7 +148,7 @@
                     }
 
 
-                } else if (e.originalEvent.deltaY < 0) { 
+                } else if (e.originalEvent.deltaY < 0) {
                     if (page == 1) return;
                     page--;
 
@@ -162,41 +162,47 @@
 
                 }
                 let posTop = (page - 1) * $(window).height();
-                wrap.animate({ scrollTop: posTop },"slow");
+                wrap.animate({ scrollTop: posTop }, "slow");
             })
+
+            // scroll 이벤트 
+            $(document).on('touchmove', function () { 
+                $(document).trigger('wheel');
+                console.log("touchtest");
+            });
 
 
 
 
             // 스크롤 시 네비게이션 css
-            function sideNav(page){
-                if( 1 < page < 6){
-                        let downNm = $('.slider-area div').eq(page-2);
-                    downNm.attr("class","active");
+            function sideNav(page) {
+                if (1 < page < 6) {
+                    let downNm = $('.slider-area div').eq(page - 2);
+                    downNm.attr("class", "active");
                     $(".slider-area div").not($(downNm)).removeAttr("class", "active");
-                    }
+                }
             }
-            
+
 
             // 클릭시 페이지 해당 페이지 위치로 이동
             $(".slider-area > div").on("click", function (e) {
 
                 const index = $(this).index();
-                const curpage = index+2;
-                page= curpage;
+                const curpage = index + 2;
+                page = curpage;
 
-                $(this).attr("class","active");
-               $(".slider-area div").not($(this)).removeAttr("class", "active");
+                $(this).attr("class", "active");
+                $(".slider-area div").not($(this)).removeAttr("class", "active");
 
                 $('html, body').stop().animate({
-                    scrollTop: $('section article').eq(index+1).offset().top
+                    scrollTop: $('section article').eq(index + 1).offset().top
                 });
 
             });
 
-    
-        </script>
 
+        </script>
+        
         <script>
 
             // 이미지 무한루프
@@ -207,7 +213,7 @@
             }, 3000);
 
         </script>
-
+        
         <script>
 
             // 안드로이드 아이폰 구분
@@ -219,12 +225,12 @@
                 if (varUA.indexOf('android') > -1) {
                     //안드로이드
                     alert("안드로이드");
-                    window.location.href="https://play.google.com/store/apps/details?id=com.parksmt.jejuair.android16";
+                    window.location.href = "https://play.google.com/store/apps/details?id=com.parksmt.jejuair.android16";
                     return "android";
                 } else if (varUA.indexOf("iphone") > -1 || varUA.indexOf("ipad") > -1 || varUA.indexOf("ipod") > -1) {
                     //IOS
                     alert("ios");
-                    window.location.href="https://apps.apple.com/kr/app/%EC%A0%9C%EC%A3%BC%ED%95%AD%EA%B3%B5/id373053637";
+                    window.location.href = "https://apps.apple.com/kr/app/%EC%A0%9C%EC%A3%BC%ED%95%AD%EA%B3%B5/id373053637";
                     return "ios";
                 } else {
                     //아이폰, 안드로이드 외

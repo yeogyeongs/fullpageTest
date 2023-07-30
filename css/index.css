@@ -2,7 +2,7 @@
 
 /*스크롤 없앰*/
 html {
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .wrap {
