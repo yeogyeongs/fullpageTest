@@ -10,14 +10,42 @@ html {
     height: auto;
 }
 
+body {
+    height: auto;
+}
+
 img {
     border:1px solid #ccc;
 }
 
-article {
-    width:100%;
+.swiper-container {
     height: 100vh;
+}
+
+.swiper-slide {
+    width:100%;
+    height: 100%;
     padding: calc(100%-1920px);
+}
+
+.swiper-slide:last-child {
+    height: 300px;
+}
+
+.swiper-pagination {
+    width:28px;
+    height:auto;
+    position: fixed;
+    right: 100px;
+    bottom:200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.swiper-pagination span {
+    width:28px;
+    height:28px;
+    margin-bottom:30px;
 }
 
 article > div {
@@ -25,7 +53,7 @@ article > div {
     height: 100vh;
     margin:0 auto;
     display: flex;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 article > div > img {

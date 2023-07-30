@@ -7,79 +7,57 @@
     <title>fullpage test</title>
     <!--style-->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 
 <body>
-    <div class="wrap">
-        <section>
-            <article class="article-box1" id="anchor1">
-                <div>
+    <div class="swiper-container">
+        <section class="swiper-wrapper">
+            <article class="swiper-slide article-box1">
+                <div class="test-wrap">
                     <div class="content-box">
                         <p>Fullpage1</p>
                         <p class="title">title section1</p>
-                        <span data-aos="fade-up" data-aos-duration="2000">description section</span>
+                        <span>description section</span>  <!--data-aos="fade-up" -->
                     </div>
                 </div>
             </article>
-            <article class="article-box2" id="anchor2">
-                <div data-aos="fade-up" data-aos-duration="2000">
-                    <div class="content-box" data-aos="fade-up">
+            <article class="swiper-slide article-box2">
+                <div  >
+                    <div class="content-box">
                         <p>Fullpage2</p>
                         <p class="title">title section2</p>
-                        <span data-aos="fade-up" data-aos-duration="2000">description section</span>
+                        <span>description section</span>
                     </div>
-                    <div class="content-img" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="content-img">
                         <img src="img/sec01.jpg" alt="light" />
                     </div>
-                </div>
+                    </div>
+                    
             </article>
-            <article class="article-box3" id="anchor3">
+            <article class="swiper-slide article-box3">
                 <div>
-                    <div class="content-box" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="content-box">
                         <p>Fullpage3</p>
                         <p class="title">title section3</p>
-                        <span data-aos="fade-up" data-aos-duration="2000">description section</span>
+                        <span>description section</span>
                     </div>
-                    <div class="content-img" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="content-img">
                         <img src="img/sec02.jpg" alt="process"/>
-                    </div>
-                </div>
-            </article>
-            <article class="article-box4" id="anchor4">
-                <div>
-                    <div class="content-box" data-aos="fade-up" data-aos-duration="2000"> 
-                        <p>Fullpage4</p>
-                        <p class="title">title section4</p>
-                        <span data-aos="fade-up" data-aos-duration="2000">description section</span>
-                    </div>
-                    <div class="content-img" data-aos="fade-up" data-aos-delay="1000">
-                        <img src="img/sec03.jpg" alt="main4">
-                    </div>
-                </div>
-            </article>
-            <article class="article-box5" id="anchor5">
-                <div>
-                    <div class="content-box" data-aos="fade-up" data-aos-duration="2000">
-                        <p>Fullpage5</p>
-                        <p class="title">title section5</p>
-                        <span data-aos="fade-up" data-aos-duration="2000">description section</span>
-                    </div>
-                    <div class="content-img" data-aos="fade-up" data-aos-delay="1000">
-                        <img src="img/sec04.jpg" alt="main4">
                     </div>
                 </div>
             </article>
 
             <!-- 모바일시 안드로이드 / 애플 구분 테스트 -->
-            <article class="article-box6" id="anchor6">
+            <article class="swiper-slide article-box6">
                 <div>
-                    <div class="content-box" data-aos="fade-up" data-aos-duration="2000">
-                        <p>Fullpage6</p>
-                        <p class="title">title section6</p>
+                    <div class="content-box">
+                        <p>Fullpage4</p>
+                        <p class="title">title section4</p>
                     </div>
-                    <div class="content-img" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="content-img">
                         <div class="link-box">
                             <button type="button" class="qr-box" onclick="location.href='https://play.google.com/store/apps/details?id=com.parksmt.jejuair.android16'">   
                                     Android
@@ -93,124 +71,20 @@
                 </div>
             </article>
 
-            <!-- anchor 안쓰는 방향으로?-->
-            <div class="slider-area">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+            <article class="swiper-slide footer" style="height: 300px important; background-color: pink;"></article>
+
+
+            <div class="swiper-pagination"></div>
 
         </section>
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="js/swiper/swiper.min.js"></script>
 
         <script>
-            AOS.init({
-                duration: 1200,
-            });
-
-        </script>
-
-
-        <script>
-
-            // 페이지 단위로 스크롤 
-
-            window.addEventListener("wheel", function (e) {
-                e.preventDefault();
-            }, { passive: false });
-
-            var wrap = $("html");
-            var page = 1;
-
-            if (page == 1) {
-                $('.slider-area').css("display", "none")
-            }
-
-            // 데스크탑 스크롤
-            $(window).on("wheel", function (e) {
-
-                // console.log("wheel", e.originalEvent.deltaY);
-                if (wrap.is(":animated")) return;  //  움직임이 있으면 멈춤
-                if (e.originalEvent.deltaY > 0) {
-                    if (page == 6) return; // 스크롤 아래
-                    page++;
-
-                    sideNav(page);
-
-                    if (page == 5 || page == 6) {
-                        $('.slider-area').fadeOut();
-                    } else {
-                        $('.slider-area').fadeIn();
-                    }
-
-
-                } else if (e.originalEvent.deltaY < 0) {
-                    if (page == 1) return;
-                    page--;
-
-                    sideNav(page);
-
-                    if (page == 1 || page == 5 || page == 6) {
-                        $('.slider-area').fadeOut();
-                    } else {
-                        $('.slider-area').fadeIn();
-                    }
-
-                }
-                let posTop = (page - 1) * $(window).height();
-                wrap.animate({ scrollTop: posTop }, "slow");
-            })
-
-            // scroll 이벤트 
-            $(document).on('touchmove', function () { 
-                $(document).trigger('wheel');
-                console.log("touchtest");
-            });
-
-
-
-
-            // 스크롤 시 네비게이션 css
-            function sideNav(page) {
-                if (1 < page < 6) {
-                    let downNm = $('.slider-area div').eq(page - 2);
-                    downNm.attr("class", "active");
-                    $(".slider-area div").not($(downNm)).removeAttr("class", "active");
-                }
-            }
-
-
-            // 클릭시 페이지 해당 페이지 위치로 이동
-            $(".slider-area > div").on("click", function (e) {
-
-                const index = $(this).index();
-                const curpage = index + 2;
-                page = curpage;
-
-                $(this).attr("class", "active");
-                $(".slider-area div").not($(this)).removeAttr("class", "active");
-
-                $('html, body').stop().animate({
-                    scrollTop: $('section article').eq(index + 1).offset().top
-                });
-
-            });
-
-
-        </script>
-        
-        <script>
-
-            // 이미지 무한루프
-            setInterval(function () {
-                $('.phone-inside li:first-child').fadeOut()
-                    .next('li').fadeIn()
-                    .end().appendTo('.phone-inside');
-            }, 3000);
+            AOS.init();
 
         </script>
         
@@ -239,6 +113,55 @@
                 }
 
             }
+        </script>
+        
+        
+        <script>
+
+            var swiper = new Swiper('.swiper-container', {
+                speed: 500,
+                direction: 'vertical',
+                mousewheel: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                watchOverflow: true,
+                on: {
+                    slideChange: function () {
+                        setTimeout(function () {
+                            swiper.params.touchReleaseOnEdges = false;
+                            swiper.params.mousewheel.releaseOnEdges = false;
+                        });
+                    },
+                    releaseOnEdges: function () {
+                        setTimeout(function () {
+                            swiper.params.touchReleaseOnEdges = true;
+                            swiper.params.mousewheel.releaseOnEdges = true;
+                        }, 500);
+                    },
+                    reachBeginning: function () {
+                        setTimeout(function () {
+                            swiper.params.touchReleaseOnEdges = true;
+                            swiper.params.mousewheel.releaseOnEdges = true;
+                        }, 500);
+                    }
+                    ,
+                    slideChangeTransitionStart: function () {
+                        // $('.swiper-slide div').hide(0);
+                        $('.swiper-slide span').removeClass('aos-init').removeClass('aos-animate');
+                        $('.content-img').removeClass('aos-init').removeClass('aos-animate');
+                        console.log("test");
+                    },
+                    slideChangeTransitionEnd: function () {
+                        // $('.swiper-slide div').show(0);
+                        AOS.init();
+                        console.log("test2");
+                    }
+                }
+            });
+
+
         </script>
 
 
